@@ -102,7 +102,7 @@ def predict(data, amount, waiting_time, future_date, start_date, base_currency, 
     std_error = math.sqrt(sum(list(map(lambda x: x * x, estimated_value_diff))) / (len(ordered_base_data) - 2))
     kv_dict = []
     for days in range(0, waiting_time):
-        key = future_date or start_date + relativedelta(days=days)
+        key = (future_date or start_date) + relativedelta(days=days)
         value = estimated_amount_list[days]
         kv_dict.append({"key": key.strftime("%d/%m/%Y"),
                         "value": value,
